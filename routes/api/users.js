@@ -37,8 +37,6 @@ router.post('/register', (req, res) => {
         return res.status(400).json(errors);
     }
     
-    
-    
     User.findOne({ email: req.body.email }) // request the email thats passed in with req.body.email
     .then(user => {
         if(user) {
