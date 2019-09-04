@@ -1,7 +1,7 @@
-import { isLength, isEmpty as _isEmpty, isURL } from 'validator';
-import isEmpty from './is-empty';
+const Validator = require('validator');
+const isEmpty = require('./is-empty.js');
 
-export default function validateProfileInput(data){
+module.exports = function validateProfileInput(data){
 	let errors = {};
 
 	data.handle = !isEmpty(data.handle) ? data.handle : '';
