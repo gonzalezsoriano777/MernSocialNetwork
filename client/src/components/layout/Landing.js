@@ -11,8 +11,7 @@ class Landing extends Component {
 		}
 	}
 
-	render() {
-		
+	render() {	
 		return (
 			<div className="landing">
 			<div className="dark-overlay landing-inner text-light">
@@ -29,7 +28,6 @@ class Landing extends Component {
 							<Link to="/login" className="btn btn-lg btn-light">
 								Login
 							</Link>
-
 						</div>
 					</div>
 				</div>
