@@ -25,8 +25,22 @@ import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
 import NotFound from './components/not-found/NotFound';
+import styled from "@emotion/styled";
+import { useTheme } from "./ThemeContext";
 
 import './App.css';
+
+
+const Wrapper = styled("div")`
+
+background: ${props.theme.background};
+width: 100vw;
+height: 100vh;
+font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen";
+h1 {
+  color: ${props => props.theme.body};
+} 
+`;
 
 // Check for token
 if(localStorage.jwtToken) {
@@ -60,6 +74,15 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={ Register } />
               <Route exact path="/login" component={ Login } />
+
+              <Wrapper>
+                <div>
+                  <button onClick={() => themeState.toggle()}>
+                      {themeState.dark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                  </button>
+               </div>
+              </Wrapper>
+
               <Route exact path="/profiles" component={ Profiles } />
               <Route exact path="/profile/:handle" component={ Profile } />
               <Switch>
