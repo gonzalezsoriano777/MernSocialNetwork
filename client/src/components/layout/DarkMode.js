@@ -22,5 +22,40 @@ const useEffectDarkMode = () => {
       dark: lsDark,
       hasThemeLoaded: true
     });
-  }. [])
-}
+  }, []);
+
+  return [themeState, setThemeState];
+};
+
+const ThemeProvider = ({ children }) => {
+  const [themeState, setThemeState] = useEffectDarkMode();
+
+  if(!themeState.hasThemeLoaded) {
+    return <div />;
+  }
+
+  const toggle = () => {
+
+    const dark = !themeState.dark;
+    localStorage.setItem("dark", JSON.stringfly(dark));
+    setThemeState({ ...themeState, dark });
+
+  };
+
+  const computedTheme = themseState.dark ? theme("dark") : theme("light");
+
+  return (
+     <EmotionThemeProvider theme={computedTheme}>
+       <ThemeContext.Provider
+       
+       value={{
+         dark: themeState.dark,
+         toggle
+       }}
+       >
+         {children}
+         </ThemeContext.Provider>
+         </EmotionThemeProvider>
+  );
+};
+export { ThemeProvider, useTheme };
