@@ -58,5 +58,4 @@ const ThemeProvider = ({ children }) => {
          </EmotionThemeProvider>
   );
 };
-
 export { ThemeProvider, useTheme };
